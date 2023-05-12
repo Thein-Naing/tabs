@@ -27,10 +27,10 @@ function App() {
     <section className='section loading'>
       <h1>loading...</h1>
     </section>
-  )
+  );
  }
 
-
+ const {company, dates, duties, title} = jobs[value];
 
   return( <main>
 
