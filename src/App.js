@@ -8,6 +8,29 @@ function App() {
   const [jobs, setJobs] = useState([]);
   const [value, setValue] = useState(0);
 
+  const fetchJobs  = async () => {
+    const response = await fetch(url);
+    const newJobs = await response.json();
+    setJobs(newJobs) // update setter function with api fetch result.
+    setLoading(false); // update setter function
+  }
+
+  //call fetchJobs call inside useEffect for rendering;
+  // provide dependency array [] to prevent unnessary re-renders;
+  useEffect(()=>{
+    fetchJobs();
+  },[])
+
+  // if loading is true, return loading ... text and we will return jobs.
+ if (loading) {
+  return (
+    <section className='section loading'>
+      <h1>loading...</h1>
+    </section>
+  )
+ }
+
+
 
   return( <main>
 
